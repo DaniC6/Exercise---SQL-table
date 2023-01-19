@@ -8,9 +8,9 @@ public class Start {
 
     public static void main(String[] args) {
 
-        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-             Statement statement = conn.createStatement();
-             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO students (last_name, first_name) VALUES (?, ?)")) {
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement statement = connection.createStatement();
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO students (last_name, first_name) VALUES (?, ?)")) {
 
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS students ("
                     + " student_id INT(10) NOT NULL AUTO_INCREMENT, "
@@ -21,7 +21,11 @@ public class Start {
             insertStudents(preparedStatement, "Daniele", "Cara");
             insertStudents(preparedStatement, "Donato", "Lege");
             insertStudents(preparedStatement, "Gerardo", "Pulie");
-            insertStudents(preparedStatement, "Renato", "Fedelo");
+            insertStudents(preparedStatement, "Arrigo", "Fedelo");
+
+            connection.close();;
+            statement.close();;
+            preparedStatement.close();;
 
 
         } catch (SQLException e) {
