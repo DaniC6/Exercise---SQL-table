@@ -23,10 +23,6 @@ public class Start {
             insertStudents(preparedStatement, "Gerardo", "Pulie");
             insertStudents(preparedStatement, "Arrigo", "Fedelo");
 
-            connection.close();;
-            statement.close();;
-            preparedStatement.close();;
-
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
